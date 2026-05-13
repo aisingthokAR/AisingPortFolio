@@ -1,57 +1,649 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aising Tamang</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aising Tamang | Fullstack Developer</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+  <style>
+    *{
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body{
+      background: #050816;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .gradient-text{
+      background: linear-gradient(to right,#06b6d4,#8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass{
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .card{
+      transition: 0.4s;
+    }
+
+    .card:hover{
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .blob{
+      position:absolute;
+      width:400px;
+      height:400px;
+      border-radius:50%;
+      filter:blur(120px);
+      opacity:0.15;
+      z-index:-1;
+    }
+
+    .typing{
+      overflow:hidden;
+      white-space:nowrap;
+      border-right:3px solid #06b6d4;
+      width:0;
+      animation: typing 4s steps(25,end) forwards infinite alternate;
+    }
+
+    @keyframes typing{
+      from{width:0}
+      to{width:290px}
+    }
+
+    .skill-bar{
+      width:0;
+      transition:2s;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="container">
-  <h2 class="logo">About<span>Me.</span></h2>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#about">About</a>
-    <a href="#service">Service</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<!-- Background -->
+<div class="blob bg-cyan-500 top-0 left-0"></div>
+<div class="blob bg-purple-600 bottom-0 right-0"></div>
+
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 w-full z-50 glass">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <h1 class="text-2xl font-bold">
+      Aising<span class="gradient-text">.</span>
+    </h1>
+
+    <ul class="hidden md:flex gap-8 font-medium">
+      <li><a href="#home" class="hover:text-cyan-400">Home</a></li>
+      <li><a href="#about" class="hover:text-cyan-400">About</a></li>
+      <li><a href="#skills" class="hover:text-cyan-400">Skills</a></li>
+      <li><a href="#projects" class="hover:text-cyan-400">Projects</a></li>
+      <li><a href="#contact" class="hover:text-cyan-400">Contact</a></li>
+    </ul>
+
+    <button id="menuBtn" class="md:hidden text-3xl">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden px-6 pb-5">
+    <div class="flex flex-col gap-4">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="min-h-screen flex items-center">
+
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+
+    <div>
+
+      <p class="uppercase tracking-[5px] text-cyan-400 mb-5">
+        Welcome To My Portfolio
+      </p>
+
+      <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+        Hi, I'm
+        <span class="gradient-text">Aising Tamang</span>
+      </h1>
+
+      <div class="text-2xl md:text-3xl font-semibold text-cyan-300 h-12 mb-8">
+        <div class="typing">
+          Fullstack Web Developer
+        </div>
+      </div>
+
+      <p class="text-gray-300 leading-8 max-w-xl mb-10">
+        Passionate Django developer focused on backend development using Python and Django.
+        Continuously improving frontend skills and building full-stack web applications
+        with clean architecture and scalable systems.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+
+        <a href="#projects"
+          class="px-8 py-4 rounded-full bg-cyan-500 hover:bg-cyan-400 transition font-semibold">
+          View Projects
+        </a>
+
+        <a href="MyResume.pdf"
+          class="px-8 py-4 rounded-full border border-cyan-400 hover:bg-cyan-400 hover:text-black transition font-semibold">
+          Download CV
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- Image -->
+<!-- <div class="flex justify-center"> -->
+
+  <!-- REMOVE animate-pulse -->
+  <!-- <div class="w-[350px] h-[350px] rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 p-2">
+
+    <img
+      src="./Aising.png"
+      class="w-full h-full object-cover rounded-full"
+    />
+
+  </div>
+
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-text">
-    <p class="hlo">Hello, Welcome</p>
-    <h1>I am Aising Tamang</h1>
-    <p class="discribe">
-        I am a Django developer focused on building powerful and scalable web applications.
-        I work with Python, Django, and modern backend technologies.
-        I aim to deliver clean code, secure systems, and smooth user experiences.
-    </p>
-    <a href=""><button class="btn">MyResume</button></a>
-  </div>
-  <div class="hero-img">
-    <img src="./mypic-removebg-preview.png" height="700px" width="500px" alt="">
-  </div>
-</div>
-
-<div id="about" class="about ">
-  <!-- <div class="about-img">
-    <img src="./mypic-removebg-preview.png" height="150px" width="200px">
   </div> -->
 
-  <div class="about-text">
-    <h2 class="aboutme">About Me</h2>
-    <p class="aaa">I am a Django developer focused on backend development using Python and Django.
-I am currently improving my frontend skills like HTML and CSS.
-I enjoy building web applications and learning how full-stack systems work.
-I have experience with backend logic, databases, and APIs.
-I am continuously learning to become a better developer.
-My goal is to improve both frontend and backend skills step by step.
-I am passionate about growing in web development field.</p>
-      <a href=""><button class="btn">Contact me</button></a>
+</section>
+
+<!-- About -->
+<section id="about" class="py-28">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-20">
+
+      <h2 class="text-5xl font-bold mb-4">
+        About <span class="gradient-text">Me</span>
+      </h2>
+
+      <p class="text-gray-400 max-w-3xl mx-auto">
+        I enjoy building web applications and learning how full-stack systems work.
+        I have experience with backend logic, databases, APIs and continuously
+        learning modern frontend technologies.
+      </p>
+
     </div>
-</div>
+
+    <div class="grid md:grid-cols-2 gap-14 items-center">
+
+      <div>
+
+        <img
+          src="./About.avif"
+          class="rounded-3xl shadow-2xl"
+        />
+
+      </div>
+
+      <div>
+
+        <h3 class="text-3xl font-bold mb-6">
+          Backend Focused Fullstack Developer
+        </h3>
+
+        <p class="text-gray-300 leading-8 mb-8">
+          My primary expertise lies in Django backend development where I build
+          secure APIs, authentication systems, database structures and dynamic web applications.
+          I am currently strengthening my frontend development skills using HTML,
+          CSS, JavaScript and modern UI design principles.
+        </p>
+
+        <div class="grid grid-cols-2 gap-6">
+
+          <div class="glass rounded-2xl p-6">
+            <h3 class="text-4xl font-bold text-cyan-400">2+</h3>
+            <p class="text-gray-300 mt-2">Projects Completed</p>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <h3 class="text-4xl font-bold text-purple-400">100%</h3>
+            <p class="text-gray-300 mt-2">Learning Mindset</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-28 bg-[#0b1023]">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-20">
+      <h2 class="text-5xl font-bold">
+        My <span class="gradient-text">Skills</span>
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Technologies and tools I use for backend and frontend development.
+      </p>
+    </div>
+
+    <!-- Programming Languages -->
+    <div class="mb-16">
+
+      <h3 class="text-3xl font-bold mb-8 text-cyan-400">
+        Programming Languages
+      </h3>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Python -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-code-s-slash-line text-5xl text-yellow-400"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            Python
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Backend programming language used for web development and APIs.
+          </p>
+
+        </div>
+
+        <!-- Django -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-server-line text-5xl text-green-400"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            Django
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Powerful Python framework for scalable web applications.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Web Technologies -->
+    <div class="mb-16">
+
+      <h3 class="text-3xl font-bold mb-8 text-purple-400">
+        Web Technologies
+      </h3>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- HTML -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-html5-fill text-5xl text-orange-500"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            HTML5
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Semantic structure for modern responsive websites.
+          </p>
+
+        </div>
+
+        <!-- CSS -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-css3-fill text-5xl text-blue-400"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            CSS3
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Styling and responsive layouts with modern UI design.
+          </p>
+
+        </div>
+
+        <!-- JavaScript -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-javascript-fill text-5xl text-yellow-300"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            JavaScript
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Interactive frontend functionality and dynamic behavior.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Version Control -->
+    <div class="mb-16">
+
+      <h3 class="text-3xl font-bold mb-8 text-pink-400">
+        Version Control
+      </h3>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- GitHub -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-github-fill text-5xl text-white"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            GitHub
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Code management, repositories and version control system.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Database -->
+    <div class="mb-16">
+
+      <h3 class="text-3xl font-bold mb-8 text-green-400">
+        Database Management Systems
+      </h3>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- MySQL -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-database-2-line text-5xl text-cyan-400"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            MySQL
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Relational database management system for web applications.
+          </p>
+
+        </div>
+
+        <!-- PostgreSQL -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-database-line text-5xl text-purple-400"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            PostgreSQL
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            Advanced open-source database system with scalability.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Design Tools -->
+    <div>
+
+      <h3 class="text-3xl font-bold mb-8 text-yellow-400">
+        Design Tools
+      </h3>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Figma -->
+        <div class="glass p-8 rounded-3xl text-center card">
+
+          <i class="ri-figma-line text-5xl text-pink-400"></i>
+
+          <h4 class="text-2xl font-bold mt-5">
+            Figma
+          </h4>
+
+          <p class="text-gray-400 mt-3">
+            UI/UX design and wireframing for modern web interfaces.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Projects -->
+<section id="projects" class="py-28">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-20">
+
+      <h2 class="text-5xl font-bold">
+        My <span class="gradient-text">Projects</span>
+      </h2>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10">
+
+      <!-- Project 1 -->
+      <div class="glass rounded-3xl overflow-hidden card">
+
+        
+
+        <div class="p-8">
+
+          <h3 class="text-3xl font-bold mb-4">
+            Online Voting System
+          </h3>
+
+          <p class="text-gray-400 leading-7 mb-6">
+            Academic project developed during the 4th semester of BCA.
+            Users can participate in online voting through a secure digital platform.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-6">
+            <span class="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300">HTML</span>
+            <span class="px-4 py-2 rounded-full bg-purple-500/20 text-purple-300">CSS</span>
+            <span class="px-4 py-2 rounded-full bg-pink-500/20 text-pink-300">JavaScript</span>
+            <span class="px-4 py-2 rounded-full bg-yellow-500/20 text-yellow-300">PHP</span>
+          </div>
+
+          <a
+            href="https://github.com/aisingthokAR/4semProject"
+            target="_blank"
+            class="inline-block px-6 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 transition"
+          >
+            View Repository
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Project 2 -->
+      <div class="glass rounded-3xl overflow-hidden card">
+
+        
+
+        <div class="p-8">
+
+          <h3 class="text-3xl font-bold mb-4">
+            MeroWorker
+          </h3>
+
+          <p class="text-gray-400 leading-7 mb-6">
+            Online service booking platform where customers can book workers
+            for home maintenance services based on location and needs.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-6">
+            <span class="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300">HTML</span>
+            <span class="px-4 py-2 rounded-full bg-purple-500/20 text-purple-300">CSS</span>
+            <span class="px-4 py-2 rounded-full bg-pink-500/20 text-pink-300">JavaScript</span>
+            <span class="px-4 py-2 rounded-full bg-yellow-500/20 text-yellow-300">PHP</span>
+          </div>
+
+          <a
+            href="https://github.com/aisingthokAR/MeroWorker"
+            target="_blank"
+            class="inline-block px-6 py-3 rounded-full bg-purple-500 hover:bg-purple-400 transition"
+          >
+            View Repository
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-28 bg-[#0b1023]">
+
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+
+      <h2 class="text-5xl font-bold">
+        Contact <span class="gradient-text">Me</span>
+      </h2>
+
+      <p class="text-gray-400 mt-4">
+        Let's work together and build something amazing.
+      </p>
+
+    </div>
+
+    <div class="glass p-10 rounded-3xl">
+
+      <form class="space-y-6">
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="bg-transparent border border-gray-600 rounded-xl px-6 py-4 outline-none focus:border-cyan-400"
+          />
+
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="bg-transparent border border-gray-600 rounded-xl px-6 py-4 outline-none focus:border-cyan-400"
+          />
+
+        </div>
+
+        <textarea
+          rows="6"
+          placeholder="Your Message"
+          class="w-full bg-transparent border border-gray-600 rounded-xl px-6 py-4 outline-none focus:border-cyan-400"
+        ></textarea>
+
+        <button
+          class="px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition"
+        >
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="py-8 border-t border-gray-800 text-center">
+
+  <p class="text-gray-400">
+    © 2026 Aising Tamang | Fullstack Web Developer
+  </p>
+
+</footer>
+
+<!-- JS -->
+<script>
+
+  // Mobile Menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Skill animation
+  const bars = document.querySelectorAll('.skill-bar');
+
+  window.addEventListener('load', () => {
+    bars.forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  });
+
+</script>
 
 </body>
 </html>
